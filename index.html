@@ -117,15 +117,6 @@
   .nav-links a:hover::after{width:100%;}
   .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
   .burger span{width:24px;height:1.5px;background:var(--text);display:block;}
-  .lang-toggle{
-    border:1px solid var(--line);background:transparent;color:var(--text-dim);
-    font-family:inherit;font-size:.78rem;letter-spacing:.05em;padding:8px 16px;
-    border-radius:20px;cursor:pointer;transition:.25s;margin-left:24px;
-  }
-  .lang-toggle:hover{border-color:var(--accent);color:var(--text);}
-  @media (max-width:900px){
-    .lang-toggle{margin-left:14px;}
-  }
 
   /* ---------- HERO ---------- */
   .hero{
@@ -350,7 +341,6 @@
         <li><a href="#about" data-i18n="nav.about">About</a></li>
         <li><a href="#contact" class="btn" style="padding:10px 22px;" data-i18n="nav.contact">Get in Touch</a></li>
       </ul>
-      <button class="lang-toggle" id="langToggle" data-current="en">中文</button>
       <button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -660,103 +650,14 @@
       'mail.details': 'Project details'
     }
   };
-  const _removed_zh = {
-      'meta.title': 'Yang Photo Studio | 商業攝影師作品集',
-      'meta.desc': 'Yang Photo Studio — 商業攝影師，主力提供商業與人像攝影，並持續進行場景與街拍創作。',
-      'cover.welcome': '歡迎光臨',
-      'cover.tagline': '商業與人像攝影 — 台灣',
-      'cover.cta': '點擊查看更多',
-      'nav.work': '作品',
-      'nav.services': '服務',
-      'nav.about': '關於',
-      'nav.contact': '聯絡我',
-      'hero.eyebrow': 'Yang Photo Studio · 商業攝影師',
-      'hero.title': '為品牌與人物<em>對焦</em>細節',
-      'hero.desc': '根據地台灣，主要為品牌與個人拍攝商業與人像作品，並持續進行場景與街拍攝影創作。',
-      'hero.cta1': '查看作品',
-      'hero.cta2': '預約拍攝',
-      'hero.scroll': '往下滑',
-      'work.eyebrow': '作品集',
-      'work.title': '精選作品',
-      'work.desc': '商業與人像為主要接案項目，場景與街拍則是持續進行的個人創作，維持觀察力的敏銳度。',
-      'filter.all': '全部',
-      'filter.commercial': '商業',
-      'filter.portrait': '人像',
-      'filter.scene': '場景',
-      'filter.street': '街拍',
-      'alt.commercial': '商業商品攝影',
-      'alt.portrait': '人像攝影',
-      'alt.scene': '場景攝影',
-      'alt.street': '街拍攝影',
-      'alt.enlarged': '放大檢視',
-      'alt.aboutphoto': '攝影師本人照片',
-      'services.eyebrow': '服務項目',
-      'services.title': '服務內容',
-      'services.desc': '依拍攝需求提供棚拍或外景服務，商業與人像檔期優先保留。',
-      'service.badge': '主力項目',
-      'service.commercial.title': '商業攝影',
-      'service.commercial.desc': '電商上架圖、型錄商品與品牌靜物拍攝，含棚拍打光與修圖後製。',
-      'service.commercial.li1': '電商 / 型錄商品圖',
-      'service.commercial.li2': '品牌靜物',
-      'service.commercial.li3': '包裝與質地特寫',
-      'service.portrait.title': '人像攝影',
-      'service.portrait.desc': '個人形象、創辦人肖像與型錄風格拍攝，棚拍或外景皆可。',
-      'service.portrait.li1': '個人 / 職業形象照',
-      'service.portrait.li2': '創辦人與品牌肖像',
-      'service.portrait.li3': '型錄與專題拍攝',
-      'service.scene.title': '場景攝影',
-      'service.scene.desc': '靜態且富觀察感的場景攝影，可用於品牌情境參考、故事敘述或個人合作案。',
-      'service.scene.li1': '品牌情境與敘事',
-      'service.scene.li2': '場勘紀錄拍攝',
-      'service.scene.li3': '個人 / 合作創作案',
-      'about.eyebrow': '關於我',
-      'about.title': '關於',
-      'about.p1': '我是 Yang，一名根據地在台灣的商業攝影師。商業與人像是主要拍攝項目，同時持續進行場景與街拍的個人創作。',
-      'about.p2': '依據品牌調性調整拍攝風格，從棚拍靜物到外景人像皆能掌握，並提供完整修圖後製，成品可直接用於上架、社群與宣傳。',
-      'about.quote': '「好的商業影像，不只是把產品拍清楚，而是讓人願意多看一眼。」',
-      'about.cta': '預約諮詢',
-      'contact.eyebrow': '聯絡方式',
-      'contact.title': '聯絡我',
-      'contact.desc': '不論是商品拍攝、品牌人像或紀實記錄，歡迎透過以下方式聯繫，將於一個工作天內回覆。',
-      'contact.subtitle': '聊聊您的拍攝需求',
-      'contact.subdesc': '請告訴我拍攝類型（商業／人像／場景／街拍）、檔期與參考風格，我會盡快回覆報價與可拍攝時間。',
-      'contact.basedin.label': '所在地',
-      'contact.basedin.value': '台灣，可接受外地拍攝，需另計交通費',
-      'form.name': '姓名',
-      'form.phone': '電話',
-      'form.email': 'Email',
-      'form.type': '拍攝類型',
-      'form.type.commercial': '商業',
-      'form.type.portrait': '人像',
-      'form.type.scene': '場景',
-      'form.type.street': '街拍',
-      'form.type.other': '其他 / 尚未確定',
-      'form.details': '需求說明',
-      'form.details.placeholder': '請簡述拍攝內容、預計時間與預算範圍',
-      'form.note': '送出後將直接寄達我的信箱，您這邊不需要額外操作。',
-      'form.submit': '送出需求',
-      'form.sending': '傳送中…',
-      'form.success': '已送出，需求信件已直接寄達，將於一個工作天內回覆。',
-      'form.error': '自動寄送失敗，已為您開啟郵件軟體，請協助手動送出。',
-      'footer.copyright': '© 2026 Yang Photo Studio. 版權所有。',
-      'footer.totop': '回到頂部 ↑',
-      'mail.subject': '拍攝需求洽詢 -',
-      'mail.name': '姓名',
-      'mail.phone': '電話',
-      'mail.email': 'Email',
-      'mail.type': '拍攝類型',
-      'mail.details': '需求說明'
-    }
-  };
 
   let currentLang = 'en';
-  const langToggle = document.getElementById('langToggle');
   const metaDesc = document.querySelector('meta[name="description"]');
 
   function applyLanguage(lang){
     currentLang = lang;
     const dict = translations[lang];
-    document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+    document.documentElement.lang = 'en';
     document.title = dict['meta.title'];
     if(metaDesc) metaDesc.setAttribute('content', dict['meta.desc']);
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -772,16 +673,6 @@
     document.querySelectorAll('[data-i18n-alt]').forEach(el => {
       const val = dict[el.dataset.i18nAlt];
       if(val !== undefined) el.setAttribute('alt', val);
-    });
-    if(langToggle){
-      langToggle.textContent = lang === 'en' ? '中文' : 'EN';
-      langToggle.dataset.current = lang;
-    }
-  }
-
-  if(langToggle){
-    langToggle.addEventListener('click', () => {
-      applyLanguage(langToggle.dataset.current === 'en' ? 'zh' : 'en');
     });
   }
 
